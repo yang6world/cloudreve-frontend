@@ -52,6 +52,14 @@ export interface SiteConfig {
   thumb_exts?: string[];
   show_encryption_status?: boolean;
   full_text_search?: boolean;
+  oidc?: OIDCConfig;
+}
+
+export interface OIDCConfig {
+  enabled: boolean;
+  display_name?: string;
+  logo?: string;
+  only_login?: boolean;
 }
 
 export interface CaptchaResponse {

@@ -178,8 +178,8 @@ const UserSession = () => {
           </SettingSectionContent>
         </SettingSection>
         <SettingSection>
-          <Typography variant="h6" gutterBottom sx={{ display: "flex", alignItems: "center" }}>
-            {t("settings.thirdPartySignIn")} <ProChip label="Pro" color="primary" size="small" />
+          <Typography variant="h6" gutterBottom>
+            {t("settings.thirdPartySignIn")}
           </Typography>
           <SettingSectionContent>
             <SettingForm lgWidth={5}>

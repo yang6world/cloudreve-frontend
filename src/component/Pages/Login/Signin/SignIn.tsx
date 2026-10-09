@@ -23,6 +23,7 @@ import PageTitle from "../../../../router/PageTitle.tsx";
 import SessionManager, { Session } from "../../../../session/index.ts";
 import { useQuery } from "../../../../util";
 import { CaptchaParams } from "../../../Common/Captcha/Captcha.tsx";
+import FacebookCircularProgress from "../../../Common/CircularProgress.tsx";
 import { DefaultCloseAction } from "../../../Common/Snackbar/snackbar.tsx";
 import DismissCircleFilled from "../../../Icons/DismissCircleFilled.tsx";
 import Phase2FA from "../Phases/Phase2FA.tsx";
@@ -31,6 +32,7 @@ import PhaseCollectPassword from "../Phases/PhaseCollectPassword.tsx";
 import PhaseConsent from "../Phases/PhaseConsent.tsx";
 import PhaseForgetPassword from "../Phases/PhaseForgetPassword.tsx";
 import PhaseSignupNeeded from "../Phases/PhaseSignupNeeded.tsx";
+import { oidcStartUrl } from "./OIDCLoginButton.tsx";
 import "../SideTransition.css";
 
 // Local storage key for OAuth redirect
@@ -509,6 +511,31 @@ const EmailLogin = ({ oauthConsent }: SignInProps) => {
 const SignIn = ({ oauthConsent }: SignInProps) => {
   const { t } = useTranslation();
   const isOAuthFlow = !!oauthConsent;
+  const query = useQuery();
+  const oidc = useAppSelector((state) => state.siteConfig.login.config.oidc);
+  const oidcRequested = query.get("oidc") === "1";
+  const localRequested = query.get("local") === "1";
+  const oidcRedirect = isOAuthFlow
+    ? `${window.location.pathname}${window.location.search}`
+    : query.get("redirect") ?? "/home";
+  const startOIDC = !!oidc?.enabled && (oidcRequested || (oidc.only_login && !localRequested));
+
+  useEffect(() => {
+    if (!startOIDC) {
+      return;
+    }
+
+    window.location.replace(oidcStartUrl(oidcRedirect));
+  }, [oidcRedirect, startOIDC]);
+
+  if (startOIDC) {
+    return (
+      <Box sx={{ display: "flex", justifyContent: "center", py: 7 }}>
+        <PageTitle title={t("login.signIn")} />
+        <FacebookCircularProgress />
+      </Box>
+    );
+  }
 
   return (
     <Box>

@@ -52,7 +52,10 @@
     "signingOut": "正在退出登录...",
     "loggedOut": "您已退出登录",
     "clickToRefresh": "点击刷新验证码",
-    "switchLanguage": "切换语言"
+    "switchLanguage": "切换语言",
+    "oidcSigningIn": "正在通过统一身份认证登录...",
+    "oidcMissingTicket": "OIDC 登录票据缺失或已过期",
+    "oidcFailed": "统一身份认证登录失败，请重试。"
   },
   "oauth": {
     "authorize": "授权应用",

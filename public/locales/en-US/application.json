@@ -52,7 +52,10 @@
     "signingOut": "Signing out...",
     "loggedOut": "You are signed out now.",
     "clickToRefresh": "Click to refresh",
-    "switchLanguage": "Switch Language"
+    "switchLanguage": "Switch Language",
+    "oidcSigningIn": "Signing in with the identity provider...",
+    "oidcMissingTicket": "The OIDC login ticket is missing or has expired",
+    "oidcFailed": "Sign-in with the identity provider failed. Please try again."
   },
   "oauth": {
     "authorize": "Authorize Application",

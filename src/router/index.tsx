@@ -4,6 +4,7 @@ import ErrorBoundary from "../component/Common/ErrorBoundary.tsx";
 import HeadlessFrame from "../component/Frame/HeadlessFrame.tsx";
 import { HomeRedirect } from "../component/Pages/HomeRedirect.tsx";
 import Activate from "../component/Pages/Login/Activate.tsx";
+import OIDCCallback from "../component/Pages/Login/OIDCCallback.tsx";
 import Authorize from "../component/Pages/Login/Authorize.tsx";
 import Reset from "../component/Pages/Login/Reset.tsx";
 import SessionIntro from "../component/Pages/Login/SessionIntro.tsx";
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
               {
                 path: "authorize",
                 element: <Authorize />,
+              },
+              {
+                path: "oidc/callback",
+                element: <OIDCCallback />,
               },
             ],
           },
